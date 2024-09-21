@@ -26,12 +26,9 @@ def deleteToDo(request,id):
     return redirect(indexPage)
 
 def finishedToDo(request,id):
-    item=todoList.objects.filter(id=id)
-    status="Finished"
-    item=todoList(
-        status=status
-    )
-    item.save()
+    items=todoList.objects.get(id=id)
+    items.status="Finished"
+    items.save()
     return redirect(indexPage)
 
 def deleteAllToDo(request):
